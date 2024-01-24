@@ -14,7 +14,7 @@ export default function CountryList() {
 
     function addCountry() {
         if(countryName.length > 0 && countryName) {
-            setCountries(c => [...c, {name: countryName}]);
+            setCountries(c => [...c, {name: countryName, medals: 0}]);
             setCountryName("");
         }
     }
