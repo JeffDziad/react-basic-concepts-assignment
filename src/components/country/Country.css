@@ -1,0 +1,16 @@
+.countryCard {
+    border: gold solid 2px;
+}
+
+.medal {
+    background-color: gold;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px !important;
+    padding: 0px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
