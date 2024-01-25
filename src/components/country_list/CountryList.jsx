@@ -1,24 +1,22 @@
-import { Grid, IconButton, InputBase, Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 import { useState } from "react";
 import "./CountryList.css";
-import AddIcon from '@mui/icons-material/Add';
 import Country from "../country/Country";
 import CountryAdd from "../country_add/CountryAdd";
 
 export default function CountryList() {
-    const [countryName, setCountryName] = useState("");
     const [countries, setCountries] = useState([
         {id: 0, name: "United States of America", medals: {bronze: 0, silver: 0, gold: 0}},
         {id: 1, name: "Poland", medals: {bronze: 0, silver: 0, gold: 0}},
         {id: 2, name: "Sweden", medals: {bronze: 0, silver: 0, gold: 0}}
     ]);
 
-    function addCountry() {
-        if(countryName.length > 0 && countryName) {
-            setCountries(c => [...c, {id: countries.length, name: countryName, medals: {bronze: 0, silver: 0, gold: 0}}]);
-            setCountryName("");
-        }
-    }
+    // function addCountry() {
+    //     if(countryName.length > 0 && countryName) {
+    //         setCountries(c => [...c, {id: countries.length, name: countryName, medals: {bronze: 0, silver: 0, gold: 0}}]);
+    //         setCountryName("");
+    //     }
+    // }
 
     function removeCountry(id) {
         let filtered = countries.filter(c => c.id !== id);
