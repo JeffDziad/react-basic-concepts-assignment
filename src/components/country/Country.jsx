@@ -7,7 +7,7 @@ import {
     Grid,
     IconButton,
     CardHeader,
-    ToggleButton
+    ToggleButton,
 } from "@mui/material";
 import "./Country.css";
 import AddIcon from '@mui/icons-material/Add';
@@ -38,7 +38,8 @@ export default function Country(props) {
             <Card sx={{boxShadow: 2, marginTop: '10px'}} className="countryCard">
                 <CardHeader
                     action={<IconButton onClick={() => props.onDelete(props.country.id)}><DeleteIcon color="error"/></IconButton>}
-                    title={props.country.name}
+                    title={<Typography variant="h5">{props.country.name}</Typography>}
+                    avatar={<img alt={props.country.name + ' flag'} height={40} src={[props.country.flag]}/>}
                 />
                 <CardContent>
                     <Grid spacing={2} container justifyContent="space-between">
@@ -72,7 +73,7 @@ export default function Country(props) {
                             <IconButton color="error" onClick={handleDecrement}><RemoveIcon/></IconButton>
                         </Grid>
                         <Grid item>
-                            <IconButton onClick={handleIncrement}><AddIcon/></IconButton>
+                            <IconButton color="success" onClick={handleIncrement}><AddIcon/></IconButton>
                         </Grid>
                     </Grid>
                 </CardActions>
