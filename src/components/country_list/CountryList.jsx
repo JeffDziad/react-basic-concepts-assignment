@@ -23,14 +23,14 @@ export default function CountryList() {
 
     return (
         <Box minWidth={400}>
-            <Grid>
-                {/*<Paper component="form" onSubmit={e => e.preventDefault()} className="addCountryInput">*/}
-                {/*    <InputBase value={countryName} onChange={event => {setCountryName(event.target.value)}} placeholder="Country Name" sx={{ p: '10px' }}></InputBase>*/}
-                {/*    <IconButton type="button" onClick={addCountry}><AddIcon/></IconButton>*/}
-                {/*</Paper>*/}
-                <CountryAdd onAddCountry={addCountry}/>
-                {(countries.length <= 0) ? <p style={{textAlign: 'center'}}>Your list is empty!</p> : ""}
-                {countries.map((country) => <Country key={country.id} country={country} onDelete={removeCountry}/>)}
+            <Grid container direction="column">
+                <Grid item>
+                    <CountryAdd onAddCountry={addCountry}/>
+                </Grid>
+                <Grid item>
+                    {(countries.length <= 0) ? <p style={{textAlign: 'center'}}>Your list is empty!</p> : ""}
+                    {countries.map((country) => <Country key={country.id} country={country} onDelete={removeCountry}/>)}
+                </Grid>
             </Grid>
         </Box>
 
