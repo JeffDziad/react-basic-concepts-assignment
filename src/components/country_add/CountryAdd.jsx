@@ -31,8 +31,8 @@ export default function CountryAdd(props) {
 
     return (
 
-            <Grid direction="column" alignItems="center" justifyContent="center">
-                <Grid item xs={10}>
+            <Grid alignItems="center" justifyContent="center">
+                <Grid item>
                     <FormControl fullWidth>
                         <InputLabel id="country-select-label">New Country</InputLabel>
                         <Select
