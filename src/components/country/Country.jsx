@@ -7,7 +7,7 @@ import {
     Grid,
     IconButton,
     CardHeader,
-    ToggleButton,
+    ToggleButton, Button,
 } from "@mui/material";
 import "./Country.css";
 import AddIcon from '@mui/icons-material/Add';
@@ -68,12 +68,12 @@ export default function Country(props) {
                 </CardContent>
                 <Divider/>
                 <CardActions>
-                    <Grid container justifyContent="space-between">
-                        <Grid item>
-                            <IconButton color="error" onClick={handleDecrement}><RemoveIcon/></IconButton>
+                    <Grid spacing={1} container justifyContent="space-around">
+                        <Grid item style={{width: "50%"}}>
+                            <Button style={{width: "100%"}} variant="outlined" color="error" onClick={handleDecrement}><RemoveIcon/></Button>
                         </Grid>
-                        <Grid item>
-                            <IconButton color="success" onClick={handleIncrement}><AddIcon/></IconButton>
+                        <Grid item style={{width: "50%"}}>
+                            <Button style={{width: "100%"}} variant="outlined" color="success" onClick={handleIncrement}><AddIcon/></Button>
                         </Grid>
                     </Grid>
                 </CardActions>
