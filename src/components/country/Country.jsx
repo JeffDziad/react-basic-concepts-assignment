@@ -16,7 +16,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from "react";
 
 export default function Country(props) {
-    const [medals, setMedals] = useState(props.country.medals);
+    const [medals, setMedals] = useState({bronze: 0, silver: 0, gold: 0});
     const [selectedMedal, setSelectedMedal] = useState("bronze");
 
     const handleIncrement = () => {

@@ -1,4 +1,4 @@
-import {FormControl, Grid, IconButton, InputLabel, MenuItem, Select} from "@mui/material";
+import {Button, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Select} from "@mui/material";
 import {useEffect, useState} from "react";
 import AddIcon from '@mui/icons-material/Add';
 
@@ -31,10 +31,10 @@ export default function CountryAdd(props) {
 
     return (
 
-            <Grid container alignItems="center" justifyContent="center">
+            <Grid direction="column" alignItems="center" justifyContent="center">
                 <Grid item xs={10}>
                     <FormControl fullWidth>
-                        <InputLabel id="country-select-label">Add Country</InputLabel>
+                        <InputLabel id="country-select-label">New Country</InputLabel>
                         <Select
                             disabled={loading}
                             placeholder={(loading)?"Loading, please wait...":""}
@@ -42,15 +42,16 @@ export default function CountryAdd(props) {
                             id="country-select"
                             name="country-select"
                             value={selectedCountry}
-                            label="Add Country"
+                            label="New Country"
                             onChange={handleChange}
                         >
                             {countries.map((c) => <MenuItem key={c.cca2} value={c.name}>{c.name}</MenuItem>)}
                         </Select>
+                        <FormHelperText>Choose a country to add!</FormHelperText>
                     </FormControl>
                 </Grid>
-                <Grid item>
-                    <IconButton onClick={addCountry} sx={{marginLeft: 1}}><AddIcon/></IconButton>
+                <Grid item sx={{marginTop: "10px"}}>
+                    <Button disabled={(!selectedCountry)} color="success" variant="contained" style={{width: "100%"}} onClick={addCountry}><AddIcon/></Button>
                 </Grid>
             </Grid>
     );

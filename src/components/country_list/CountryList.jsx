@@ -11,7 +11,6 @@ export default function CountryList() {
         let match = countries.find((c) => c.name === country.name);
         if(!match) {
             country.id = "country-"+Date.now();
-            country.medals = {bronze: 0, silver: 0, gold: 0};
             setCountries(c => [...c, country]);
         }
     }
@@ -23,9 +22,11 @@ export default function CountryList() {
 
     return (
         <Box minWidth={400}>
-            <Grid container direction="column">
+            <Grid container direction="column" alignItems="stretch">
                 <Grid item>
-                    <CountryAdd onAddCountry={addCountry}/>
+                    <div>
+                        <CountryAdd onAddCountry={addCountry}/>
+                    </div>
                 </Grid>
                 <Grid item>
                     {(countries.length <= 0) ? <p style={{textAlign: 'center'}}>Your list is empty!</p> : ""}
