@@ -15,3 +15,9 @@ header {
     --darkreader-inline-bgimage: initial;
     --darkreader-inline-bgcolor: #0b7196;
 }
+
+.black-outline {
+    font-weight: bolder;
+    -webkit-text-stroke-width: thin;
+    -webkit-text-stroke-color: black;
+}

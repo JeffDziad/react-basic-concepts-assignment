@@ -7,12 +7,36 @@ import CountryAdd from "../country_add/CountryAdd";
 export default function CountryList() {
     const [countries, setCountries] = useState([]);
 
-    const totalCountryMedals = () => {
+    const totalMedals = () => {
         let t = 0;
         countries.forEach((item) => {
             for(let medal in item.medals) {
                 t+=item.medals[medal];
             }
+        });
+        return t;
+    }
+
+    const totalBronze = () => {
+        let t = 0;
+        countries.forEach((item) => {
+            t+=item.medals["bronze"];
+        });
+        return t;
+    }
+
+    const totalSilver = () => {
+        let t = 0;
+        countries.forEach((item) => {
+            t+=item.medals["silver"];
+        });
+        return t;
+    }
+
+    const totalGold = () => {
+        let t = 0;
+        countries.forEach((item) => {
+            t+=item.medals["gold"];
         });
         return t;
     }
@@ -58,7 +82,20 @@ export default function CountryList() {
                     {countries.map((country) => <Country key={country.id} country={country} onIncrement={incrementMedal} onDecrement={decrementMedal} onDelete={removeCountry}/>)}
                 </Grid>
                 <Grid item sx={{marginTop: '10px'}}>
-                    <Chip label={`Total Medals: ${totalCountryMedals()}`}></Chip>
+                    <Grid container justifyContent="space-between">
+                        <Grid item>
+                            <Chip style={{backgroundColor: "saddlebrown", color: "white", fontSize: "25px"}} label={`Bronze: ${totalBronze()}`}></Chip>
+                        </Grid>
+                        <Grid item>
+                            <Chip style={{backgroundColor: "silver", color: "white", fontSize: "25px"}} label={`Silver: ${totalSilver()}`}></Chip>
+                        </Grid>
+                        <Grid item>
+                            <Chip style={{backgroundColor: "gold", color: "white", fontSize: "25px"}} label={`Gold: ${totalGold()}`}></Chip>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item sx={{marginTop: '10px'}}>
+                    <Chip style={{fontSize: "25px"}} label={`Total Medals: ${totalMedals()}`}></Chip>
                 </Grid>
             </Grid>
         </Box>

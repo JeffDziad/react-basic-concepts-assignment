@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="title">
-          <span style={{color: "brown"}}>Olympic </span>
+          <span style={{color: "saddlebrown"}}>Olympic </span>
           <span style={{color: "silver"}}>Medal </span>
           <span style={{color: "gold"}}>Tracker</span>
       </header>
