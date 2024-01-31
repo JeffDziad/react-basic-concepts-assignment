@@ -72,7 +72,7 @@ export default function CountryList() {
 
     return (
         <Box minWidth={400}>
-            <Grid container direction="column" alignItems="stretch">
+            <Grid container direction="column" alignItems="stretch" sx={{marginBottom: "20px"}}>
                 <Grid item>
                     <div>
                         <CountryAdd onAddCountry={addCountry}/>
