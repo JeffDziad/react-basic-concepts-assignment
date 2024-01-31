@@ -1,4 +1,5 @@
 import {Box, Chip, Grid} from "@mui/material";
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useState } from "react";
 import "./CountryList.css";
 import Country from "../country/Country";
@@ -84,18 +85,24 @@ export default function CountryList() {
                 <Grid item sx={{marginTop: '10px'}}>
                     <Grid container justifyContent="space-between">
                         <Grid item>
-                            <Chip style={{backgroundColor: "saddlebrown", color: "white", fontSize: "25px"}} label={`Bronze: ${totalBronze()}`}></Chip>
+                            <Chip variant="outlined" style={{fontSize: "20px"}} label={
+                                <p style={{display: "flex", alignItems: "center", flexWrap: "wrap"}}><EmojiEventsIcon fontSize="large" style={{color: "saddlebrown"}}/> - {totalBronze()}</p>
+                            }></Chip>
                         </Grid>
                         <Grid item>
-                            <Chip style={{backgroundColor: "silver", color: "white", fontSize: "25px"}} label={`Silver: ${totalSilver()}`}></Chip>
+                            <Chip variant="outlined" style={{fontSize: "20px"}} label={
+                                <p style={{display: "flex", alignItems: "center", flexWrap: "wrap"}}><EmojiEventsIcon fontSize="large" style={{color: "silver"}}/> - {totalSilver()}</p>
+                            }></Chip>
                         </Grid>
                         <Grid item>
-                            <Chip style={{backgroundColor: "gold", color: "white", fontSize: "25px"}} label={`Gold: ${totalGold()}`}></Chip>
+                            <Chip variant="outlined" style={{fontSize: "20px"}} label={
+                                <p style={{display: "flex", alignItems: "center", flexWrap: "wrap"}}><EmojiEventsIcon fontSize="large" style={{color: "gold"}}/> - {totalGold()}</p>
+                            }></Chip>
                         </Grid>
                     </Grid>
                 </Grid>
                 <Grid item sx={{marginTop: '10px'}}>
-                    <Chip style={{fontSize: "25px"}} label={`Total Medals: ${totalMedals()}`}></Chip>
+                    <Chip style={{fontSize: "20px"}} label={`Total: ${totalMedals()}`}></Chip>
                 </Grid>
             </Grid>
         </Box>
