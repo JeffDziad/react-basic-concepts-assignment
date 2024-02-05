@@ -45,8 +45,6 @@ export default function CountryList() {
     function addCountry(country) {
         let match = countries.find((c) => c.name === country.name);
         if(!match) {
-            country.id = "country-"+Date.now();
-            country.medals = {bronze: 0, silver: 0, gold: 0}
             setCountries(c => [...c, country]);
         }
     }

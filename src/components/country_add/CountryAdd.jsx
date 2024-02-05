@@ -1,4 +1,9 @@
-import {Button, FormControl, FormHelperText, Grid, InputLabel, MenuItem, Select} from "@mui/material";
+import {
+    Autocomplete,
+    Button,
+    Grid,
+    TextField
+} from "@mui/material";
 import {useEffect, useState} from "react";
 import AddIcon from '@mui/icons-material/Add';
 
@@ -9,23 +14,21 @@ export default function CountryAdd(props) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(URL).then(res => res.json()).then((countries) => {
-            setCountries(countries);
+        fetch(URL).then(res => res.json()).then((c) => {
+            for(let i = 0; i < c.length; i++) {
+                let country = c[i];
+                country.id = "country-"+country.cca2;
+                country.medals = {bronze: 0, silver: 0, gold: 0};
+                setCountries(prevState => [...prevState, country]);
+            }
             setLoading(false);
-            let usa = countries.find((c) => c.name === "United States");
-            props.onAddCountry(usa);
         });
-    }, [props]);
-
-    const handleChange = (e) => {
-        setSelectedCountry(e.target.value);
-    }
+    }, []);
 
     const addCountry = () => {
         if(selectedCountry.length > 0 && selectedCountry) {
             let country = countries.find((c) => c.name === selectedCountry);
-            setSelectedCountry("");
-            props.onAddCountry(country);
+            props.onAddCountry(JSON.parse(JSON.stringify(country)));
         }
     }
 
@@ -33,22 +36,26 @@ export default function CountryAdd(props) {
 
             <Grid alignItems="center" justifyContent="center">
                 <Grid item>
-                    <FormControl fullWidth>
-                        <InputLabel id="country-select-label">New Country</InputLabel>
-                        <Select
-                            disabled={loading}
-                            placeholder={(loading)?"Loading, please wait...":""}
-                            labelId="country-select-label"
-                            id="country-select"
-                            name="country-select"
-                            value={selectedCountry}
-                            label="New Country"
-                            onChange={handleChange}
-                        >
-                            {countries.map((c) => <MenuItem key={c.cca2} value={c.name}>{c.name}</MenuItem>)}
-                        </Select>
-                        <FormHelperText>Choose a country to add!</FormHelperText>
-                    </FormControl>
+                    <Autocomplete
+                        loading={loading}
+                        loadingText="Loading..."
+                        onChange={(e) => setSelectedCountry(e.target.innerText)}
+                        style={{width: '100%'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={countries}
+                        getOptionDisabled={(option) => option.disabled}
+                        getOptionLabel={(option) => option.name}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Country" />}
+                        renderOption={(props, option) => {
+                            return (
+                                <li {...props} key={option.id}>
+                                    {option.name}
+                                </li>
+                            );
+                        }}
+                    />
                 </Grid>
                 <Grid item sx={{marginTop: "10px"}}>
                     <Button disabled={(!selectedCountry)} color="success" variant="contained" style={{width: "100%"}} onClick={addCountry}><AddIcon/></Button>
